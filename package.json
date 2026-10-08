@@ -1,0 +1,19 @@
+{
+  "name": "fastapi-full-stack-template",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"backend,frontend\" -c \"green.bold,cyan.bold\" \"cd backend && uv run fastapi dev app/main.py\" \"pnpm --filter frontend dev\"",
+    "dev:backend": "cd backend && uv run fastapi dev app/main.py",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build": "pnpm --filter frontend build",
+    "lint": "pnpm --filter frontend lint",
+    "test": "pnpm --filter frontend test"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
